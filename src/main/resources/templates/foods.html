@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main.html}">
+<div layout:fragment="mainFragment">
+
+  <h2 class="mb-4 ms-2">All Foods</h2>
+
+  <div class="ms-2 me-2">
+    <table class="table">
+      <thead class="table-warning">
+      <tr>
+        <th>ID</th>
+        <th>Name <span style="color: #434343;"></span></th>
+        <th>Colories</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>View</th>
+      </tr>
+      </thead>
+      <tbody class="table-striped">
+      <tr th:each="food : ${foods}">
+        <td class="pt-3" th:text="${food.id}"></td>
+        <td class="pt-3" th:text="${food.name}"></td>
+        <td class="pt-3" th:text="${food.calories}"></td>
+        <td class="pt-3" th:text="${food.amounts}"></td>
+        <td class="pt-3" th:text="${food.price}"></td>
+        <td>
+          <!-- Ссылка на страницу детального просмотра машины (О ней расскажу чуть позже) -->
+          <a class="btn btn-primary" th:href="@{'/food?id=' + ${food.id}}">View</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</html>
